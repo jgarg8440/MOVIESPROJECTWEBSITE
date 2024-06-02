@@ -41,13 +41,14 @@ app.use((req, res, next) => {
   next();
 });
 
-const store = new MongoStore({
+const store = MongoStore.create({
   mongoUrl: dburl,
   crypto: {
     secret: process.env.SECRET,
     touchAfter: 24 * 3600,
-  }
+  },
 });
+
 
 app.use(session({
   store,
