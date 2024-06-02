@@ -6,7 +6,7 @@ const passport = require("passport");
 const flash = require('express-flash');
 const LocalStrategy = require("passport-local");
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
 const bodyParser = require('body-parser');
 const passportLocalMongoose = require('passport-local-mongoose');
 const app = express();
@@ -41,7 +41,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const store = MongoStore.create({
+const store = new MongoStore({
   mongoUrl: dburl,
   crypto: {
     secret: process.env.SECRET,
