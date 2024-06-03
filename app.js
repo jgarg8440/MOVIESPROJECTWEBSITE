@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV != "production"){
+  require('dotenv').config();
+
+}
 const express = require('express');
 const path = require('path');
 const mongoose = require("mongoose");
@@ -12,9 +16,8 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const app = express();
 const User = require("./models/user.js");
 const Listing = require("./models/listing.js"); 
-require('dotenv').config();
 
-const dburl = process.env.Atlas_url;
+const dburl = mongodb+srv://jgarg8440:SQgFJq8XGKIySBSr@moviesdb.afwje0i.mongodb.net/?retryWrites=true&w=majority&appName=moviesdb;
 
 main()
   .then(() => {
